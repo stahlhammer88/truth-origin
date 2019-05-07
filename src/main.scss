@@ -16,8 +16,9 @@ $header-back: #E5E4DF;
 
 //BREAKPOINTS
 
-$general: "only screen and (max-width : 1364px)";
-$tablet: "only screen and (max-width : 720px)";
+$large: "only screen and (max-width : 1370px)";
+$medium: "only screen and (max-width : 720px)";
+$small: "only screen and (max-width : 430px)";
 
 @keyframes hovering {
     0% {
@@ -84,6 +85,10 @@ h1, h2, h3 {
 h1 {
     font-size: $caption-size;
     margin-bottom: 20px;
+
+    @media #{$small} {
+        font-size: $second-header-size; 
+    }
 }
 
 h2 {
@@ -111,8 +116,7 @@ input[type=text], select {
 .home {        
     &__landing{
         height: 100vh;
-        background: $main-pic;
-        background-position: 0 bottom;
+        background: $main-pic;        
     }
 
     &__caption {
@@ -121,6 +125,10 @@ input[type=text], select {
         margin-top: 50px;
         transition: all .3s ease;
         cursor: pointer;
+
+        @media #{$small} {
+            font-size: $second-header-size; 
+        }
 
         &:hover {
             color:#fff;
@@ -147,7 +155,7 @@ input[type=text], select {
     box-sizing: border-box;
     flex-wrap: wrap;
 
-    @media #{$general} {
+    @media #{$large} {
         padding: 60px 20px;
     }
 
@@ -156,17 +164,17 @@ input[type=text], select {
         align-items: flex-start;
         padding: 0;
 
-        @media #{$general} {
+        @media #{$large} {
             padding: 0 20px;
         }
     }   
 
     &--footer {
-        @media #{$general} {
+        @media #{$large} {
             justify-content: center;
         }
 
-        @media #{$tablet} {
+        @media #{$medium} {
             flex-direction: column;
             align-items: center;
         }
@@ -188,20 +196,38 @@ input[type=text], select {
     flex-grow: 1;
     font-size: $third-header-size;
 
+    @media #{$medium} {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
     &--header {
         font-size: 21px;
         margin-top: 26px;
         justify-content: flex-start;
 
-        >a {
-            margin-right: 85px;
+        @media #{$medium} {
+            display: none;
         }
+
+        >a {
+            margin-right: 85px;            
+        }
+    }
+
+    &--sidebar {
+        width:100%;
     }
 
     &__item {
         text-transform: uppercase;
         display: inline-block;
-        color: $main-nav-col;     
+        color: $main-nav-col;  
+        
+        @media #{$medium} {
+            margin: 0 0 20px 0;
+        }
         
         &.active{
             color: $link-hover-col;
@@ -220,7 +246,7 @@ input[type=text], select {
     padding: 45px 0 40px;        
     box-sizing: border-box;   
 
-    @media #{$tablet} {
+    @media #{$medium} {
         background: $header-back;
     }
     
@@ -230,7 +256,7 @@ input[type=text], select {
         flex-direction: column;
         min-width: 340px;
 
-        @media #{$general} {
+        @media #{$large} {
             margin-bottom: 40px;
             align-items: center;
             order: 2;
@@ -247,7 +273,7 @@ input[type=text], select {
         width: 40%;
         min-width: 340px;                
 
-        @media #{$general} {
+        @media #{$large} {
             margin-bottom: 40px;
             order: 1
         }        
@@ -257,7 +283,7 @@ input[type=text], select {
         width: 20%;
         min-width: 230px;
 
-        @media #{$general} {
+        @media #{$large} {
             order: 3
         }
     }
@@ -287,7 +313,7 @@ input[type=text], select {
     display: flex;
     flex-direction: column;
 
-    @media #{$tablet} {
+    @media #{$medium} {
         align-items: center;
     }
 
@@ -295,7 +321,7 @@ input[type=text], select {
         width: 400px;
         margin-bottom: 15px;
 
-        @media #{$general} {
+        @media #{$large} {
             width: 100%;
         }
     }
@@ -325,7 +351,7 @@ input[type=text], select {
         line-height: 17px;
         margin-bottom: 30px;
 
-        @media #{$general} {
+        @media #{$large} {
             width: 100%;
         }
     }
@@ -398,6 +424,12 @@ input[type=text], select {
         h1 {
             width: 400px;
             white-space: nowrap;
+
+            @media #{$medium} {
+                white-space: normal;
+                width: auto;
+                font-size: $second-header-size;
+            }
         }
     }
 
@@ -406,19 +438,23 @@ input[type=text], select {
         opacity: .8;
         width: 100px;
         text-align: right;
+
+        @media #{$medium} {
+            font-size: $second-header-size;
+        }
     }
 
     &__cover {
-        width: 500px;
-        height: 500px;
+        width: 100%;
+        max-width: 500px;
         background-position: center;
         box-sizing: border-box;
         border: 10px solid #fff;
-        margin-right: 50px;
+        margin-right: 50px;        
+        align-self: flex-start;
 
-        @media #{$tablet} {
-            margin-right: 0;
-            width: 100%;
+        @media #{$medium} {
+            margin-right: 0;            
         }
     }
 
@@ -515,7 +551,9 @@ input[type=text], select {
 
 .header {
     background: $header-back;
-    height: 83px;
+    height: 83px;    
+    position: relative;
+    z-index: 5;
 
     .logo {
         margin-top: 15px;
@@ -525,10 +563,38 @@ input[type=text], select {
     }
 
     &__logo-link {
+
+        @media #{$medium} {
+            flex-grow: 1;
+        }
         &::after {
             display: none;
         }
     }
+
+    &__menu {
+        width: 23px;
+        height: 23px;
+        background: url('/img/menu.svg') no-repeat;
+        background-size: cover;
+        margin-top: 30px;
+        cursor: pointer;
+        display: none;
+
+        @media #{$medium} {
+            display: block;
+        }
+    }
+}
+
+.sidebar {
+    position: fixed;
+    top: 83px;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    background: $header-back;
+    z-index: 5;    
 }
 
 .landing {
@@ -549,7 +615,7 @@ input[type=text], select {
         font-size: $caption-size;
         position: relative;
         margin-bottom: 100px;
-        margin-top: 100px;
+        margin-top: 100px;        
 
         &::before, &::after {
             content: '';
@@ -580,7 +646,7 @@ input[type=text], select {
 
     &__img {
         margin-bottom: 20px;
-        height: 500px;
+        width: 100%;        
     }
 
     &__title {
@@ -597,6 +663,7 @@ input[type=text], select {
 .tour {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     &__item {
         display: flex;
@@ -604,8 +671,11 @@ input[type=text], select {
         margin-bottom: 60px;
         border-right: 1px dotted #fff;
         box-sizing: border-box;
-        padding: 20px 30px 20px 0;
-        margin-right: 30px;
+        padding: 20px 30px 20px 0;    
+        
+        @media #{$small} {
+            border:none;
+        }
 
         &:nth-of-type(3n + 3) {
             border-right: none;
@@ -644,11 +714,13 @@ input[type=text], select {
     &__row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        margin-bottom: 60px;
+        justify-content: space-between;        
     }
 
-    &__item {
+    &__item {        
+        margin-bottom: 60px;
+        
+
         &--purchased {
             opacity: .6;
 
@@ -700,7 +772,8 @@ input[type=text], select {
     }
 
     &__img {
-        height: 367px;
+        max-width: 367px;
+        width:100%;
     }
 }
 

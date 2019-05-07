@@ -11,15 +11,14 @@ const Album = ({id, title, year, coverUrl, preOrder, pricing, tracklist}) => {
     }
 
     return (
-        <Fade right delay={id*80} duration={900}>
+        <Fade left delay={id*80} duration={900}>
             <div className="album">
                 <div className="album__caption">
                     <h1>{title}</h1>
                     {preOrder ? null : <div className="album__year">{year}</div>}
-                </div>                        
-                <div className="album__cover" style={{background: `url(${coverUrl})`}}>
-
-                </div>
+                </div>  
+                <img src={coverUrl} className="album__cover" alt="album cover"/>                                      
+                
                 <div className="album__info">
                     {preOrder? <div className="album__pre-order">PRE-ORDER</div> : null}
                     <div className="album__pricing">
