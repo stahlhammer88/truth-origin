@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Nav from '../Nav';
+import Nav from '../ui/Nav';
 import {Link} from 'react-router-dom';
 import { Fade } from 'react-reveal';
 import SideBar from './SideBar';

@@ -1,0 +1,192 @@
+$main-back : #EB6B6B;
+$main-black: #393939;
+$beige: #f6f4ee;
+$green: #11b196;
+$light-gray: #AAA;
+$segoe: 'Segoe UI', Arial, Tahoma, Helvetica, sans-serif;
+$dropbox-icon: "/upload/outbox.svg";
+$jpg-icon: "/upload/jpg.svg";
+$cancel-icon: "/upload/remove-symbol.svg";
+
+
+
+html, body, #root{
+    background: $main-back;
+    font-family: $segoe;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shadow {
+    from {
+        box-shadow: none;
+    }
+    to {
+        box-shadow: 0 0 0 10px $main-black;
+    }
+}
+
+@keyframes shadowOut {
+    from {
+        box-shadow: 0 0 0 10px $main-black;
+    }
+    to {        
+        box-shadow: none;
+    }
+}
+
+.upload {
+    width: 644px;
+
+    &__caption {
+        font-size: 41px;
+        color:$main-black;
+        font-weight: 900;
+        margin-bottom: 30px;
+    }   
+    
+    &__container {
+        width: 100%;
+        height: 392px;
+        background: $beige;
+        border-radius: 16px;
+        padding: 30px 50px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: none;
+
+        &--ondrag {
+            animation: shadow .5s ease-in-out forwards;
+
+            .upload__drop-icon {
+                animation: scale .5s ease-in-out;
+            }
+        }
+
+        &--dragfade {
+            animation: shadowOut .5s ease-in-out forwards;
+        }
+    }
+
+    &__browse-btn {
+        background: $green;
+        border-radius: 24px;
+        padding: 10px 35px;
+        font-weight: 500;
+    }
+
+    &__initial, &__files-list {
+        flex-grow: 1;        
+    }
+
+    &__initial {
+        width: 100%;       
+    }
+
+    &__drop-here {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__drop-icon {
+        width: 70px;
+        height: 70px;
+        background: url($dropbox-icon) no-repeat;        
+    }
+
+    &__drop-text {
+        font-size: 22px;
+        color: $light-gray;
+        font-weight: 500;
+        padding-top: 20px;
+    }
+
+    &__delimeter {
+        font-family: 'Playfair Display';
+        color: $light-gray;
+        font-style: italic;
+        text-align: center;
+        font-size: 28px;
+        width: 85px;
+        margin: 60px auto;
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 130px;
+            border-top: 1px solid $light-gray;
+            position: absolute;
+            top: 17px;
+        }
+
+        &::before {
+            left: 90px;
+        }
+
+        &::after {
+            right: 90px;
+        }
+    }
+
+    &__file-icon {
+        width: 39px;
+        height: 50px;
+        background: url($jpg-icon) no-repeat;
+    }
+
+    &__cancel {
+        width: 15px;
+        height: 15px;
+        background: url($cancel-icon) no-repeat;
+        background-size: cover;
+        cursor: pointer;
+    }
+
+    &__files-list {
+        width: 100%;
+    }
+
+    &__file-item {
+        display:flex;
+        align-items: center;
+        margin-bottom: 20px;
+        justify-content: space-between;
+    }
+
+    &__progress {
+        width: 422px;
+        height: 7px;
+        background: #9BD5CB;
+        border-radius: 13px;
+        overflow: hidden;
+    }
+
+    &__progress-completed {
+        height: 7px;
+        background: $green;
+    }
+}

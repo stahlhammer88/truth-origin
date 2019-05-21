@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../Nav';
+import Nav from '../ui/Nav';
 import { Slide } from 'react-reveal';
 
 const SideBar = ({showSideBar}) => {

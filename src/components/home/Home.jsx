@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../Nav';
+import Nav from '../ui/Nav';
 import Landing from './Landing';
 import {Element, scroller} from 'react-scroll';
 import { Fade } from 'react-reveal';
@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <div className="home">
             <Fade>
-                <div className="home__landing">
+                <div className="home__header">
                     <div className="wrapper">                    
                         <div className="logo"></div>                    
                         <Nav context="home"/>

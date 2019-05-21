@@ -6,13 +6,13 @@ $main-nav-col: #41403E;
 $link-hover-col: #448E9D;
 $bright-blue: #448E9D;
 $caption-size: 49px;
-$main-pic: url('/img/back2.jpg') 0 0 no-repeat;
+$header-back: #E5E4DF;
+$main-pic: $header-back url('/img/back2.jpg') 0 bottom no-repeat;
 $footer-font-col: #535353;
 $footer-caption-col: #44423C;
 $arial: Arial, Helvetica, sans-serif;
 $oswald: 'Oswald', Arial, Helvetica, sans-serif;
 $button-col: #35484A;
-$header-back: #E5E4DF;
 
 //BREAKPOINTS
 
@@ -114,9 +114,13 @@ input[type=text], select {
 }
 
 .home {        
-    &__landing{
+    &__header{
         height: 100vh;
-        background: $main-pic;        
+        background: $main-pic;      
+        
+        @media #{$small} {
+            background-position: 0 0;
+        }
     }
 
     &__caption {

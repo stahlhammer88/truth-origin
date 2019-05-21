@@ -13,7 +13,7 @@ class ShopItem extends Component {
 
     handlePurchase = () => {
         const {selectedSize, sizeError} = this.state;
-        if (!selectedSize) {
+        if (!selectedSize && !sizeError) {
             this.setState({sizeError: true});
         }
         else {            

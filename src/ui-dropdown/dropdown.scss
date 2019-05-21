@@ -1,0 +1,155 @@
+body {    
+    background: #598c7e;
+}
+
+#root{
+    background: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Raleway';
+    text-transform: uppercase;
+}
+
+.stick {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #fff;
+    transition: all .5s ease-in-out;
+}
+
+.ui-dropdown {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+
+    i {
+        @extend .stick;
+        left: -30px;
+        border-radius: 4px;
+        top: 8px;        
+
+        &::before, &::after {
+            content: '';
+            @extend .stick;
+        }
+
+        &::before {
+            top: -6px;
+        }
+
+        &::after {
+            bottom: -6px;
+        }
+    }
+
+    &.opened {
+        i {
+            transform: rotate(45deg);
+
+            &::after {
+                opacity: 0;
+            }
+
+            &::before {
+                transform: rotate(90deg);
+                top: 0;
+            }
+        }
+    }
+}
+
+.ui-wrapper {
+    position: relative;
+}
+
+@keyframes slide {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.content {
+    position: absolute;
+    animation: slide .5s ease-in-out forwards;
+    transform-origin: top;
+    background: #fffcf0;
+    border-radius: 3px;
+    color: black;
+    padding: 10px 0 20px;
+
+    ul {
+        display: flex;
+
+        li {
+            padding: 0 40px;
+            width: 150px;
+        }
+    }
+
+    &.closing {
+        animation: slideUp .5s ease-in-out forwards;
+
+        ul {
+            animation: fadeOut .3s ease-in-out forwards;
+        }
+    }
+}
+
+ul {
+    padding: 0;
+    li {
+        list-style-type: none;
+    }
+}
+
+.nav {
+    ul {
+        display: flex;
+
+        li {
+            margin: 0 40px;
+        }
+    }    
+}
+
+.caption {
+    margin-bottom: 10px;
+}
+
+.text{
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:gray;
+    text-transform: none;
+}

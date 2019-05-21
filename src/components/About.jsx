@@ -1,7 +1,6 @@
 import React from 'react';
 import { about } from '../data/about';
 import {Fade} from 'react-reveal';
-import LazyLoad from 'react-lazyload';
 
 const About = () => {
     return (
@@ -10,8 +9,8 @@ const About = () => {
                 {about.map((item, i) => {
                     const {year, url, title, text} = item;
                     return (
-                        <Fade>
-                            <div className="about__item" key={i}>
+                        <Fade key={i}>
+                            <div className="about__item">
                                 <div className="about__year">{year}</div>                                
                                 <img src={url} alt="about the band" className="about__img"/>                                
                                 <div className="about__title">{title}</div>

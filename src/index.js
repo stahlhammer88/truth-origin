@@ -9,6 +9,8 @@ import Tour from './components/Tour';
 import Shop from './components/shop/Shop';
 import Footer from './components/header-footer/Footer';
 import Header from './components/header-footer/Header';
+//import DropDown from './ui-dropdown/DropDown';
+import Upload from './upload/Upload';
 
 const Routes = () => (
     <BrowserRouter>
@@ -24,4 +26,4 @@ const Routes = () => (
     </BrowserRouter>
 )
 
-ReactDOM.render(<Routes/>, document.getElementById('root'));
+ReactDOM.render(<Upload/>, document.getElementById('root'));
