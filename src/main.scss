@@ -17,7 +17,7 @@ $button-col: #35484A;
 //BREAKPOINTS
 
 $large: "only screen and (max-width : 1370px)";
-$medium: "only screen and (max-width : 720px)";
+$medium: "only screen and (max-width : 768px)";
 $small: "only screen and (max-width : 430px)";
 
 @keyframes hovering {
@@ -249,6 +249,7 @@ input[type=text], select {
     background: $main-pic;
     padding: 45px 0 40px;        
     box-sizing: border-box;   
+    background-position: top;
 
     @media #{$medium} {
         background: $header-back;
@@ -420,6 +421,10 @@ input[type=text], select {
     flex-wrap: wrap;
     margin-bottom: 60px;
 
+    @media #{$medium} {
+        justify-content: center;
+    }
+
     &__caption {
         flex-grow: 1;
         flex-basis: 100%;        
@@ -459,6 +464,7 @@ input[type=text], select {
 
         @media #{$medium} {
             margin-right: 0;            
+            margin-bottom: 20px;
         }
     }
 
@@ -718,7 +724,7 @@ input[type=text], select {
     &__row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;        
+        justify-content: space-around;
     }
 
     &__item {        
